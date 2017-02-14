@@ -16,21 +16,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.StringJoiner;
 
+/*@RequestMapping("/upload")*/
 @Controller
 public class UploadController {
 
 	//Save the uploaded file to this folder
     private static String UPLOADED_FOLDER = "F://temp//";
 
-    @GetMapping("/upload")
+/*    @GetMapping("/upload")
     public String index() {
         return "upload";
-    }
+    }*/
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    //@PostMapping("/upload") // //new annotation since 4.3
-    public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+    //@RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @PostMapping // //new annotation since 4.3
+    public String singleFileUpload(@RequestParam("pippo") MultipartFile file, RedirectAttributes redirectAttributes) {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
