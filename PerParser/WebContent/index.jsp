@@ -24,11 +24,11 @@ body {
 			
 			<%-- <form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data"> --%>
 			<form method="POST" action="upload" enctype="multipart/form-data">
-			<select name="productId">
-			    <option value="1">GL File</option>
-			    <option value="2">OverSelling</option>
-			    <option value="3">OPE</option>
-			    <option value="3">OBE</option>
+			<select name="fileType">
+			    <option value="GL">GL File</option>
+			    <option value="OS">OverSelling</option>
+			    <option value="OPE">OPE</option>
+			    <option value="OBE">OBE</option>
 			  </select>
 	    		<input type="file" name="pippo" /><br/>
 			    <input type="submit" value="Upload File" />
