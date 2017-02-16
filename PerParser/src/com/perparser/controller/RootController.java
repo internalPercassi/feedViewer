@@ -162,7 +162,7 @@ public class RootController implements ServletContextAware{
 			}
 		}
     	
-		ModelAndView model = new ModelAndView("/");
+		ModelAndView model = new ModelAndView();
 		model.addObject("data", data);
     	return "redirect:/index.jsp";
 
