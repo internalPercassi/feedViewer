@@ -10,6 +10,7 @@ $(function() {
 
   // We can watch for our custom `fileselect` event like this
   $(document).ready( function() {
+	 
       $(':file').on('fileselect', function(event, numFiles, label) {
 
           var input = $(this).parents('.input-group').find(':text'),
@@ -23,7 +24,7 @@ $(function() {
 
       });
       
-      
+      $('#myTable').DataTable();
       
   });
   

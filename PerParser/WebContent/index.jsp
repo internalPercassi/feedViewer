@@ -23,6 +23,7 @@
 <title>PerParser</title>
 </head>
 
+
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -74,7 +75,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
 		  <div class="row placeholders">
-			<form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data">
+			<form method="POST" action="takis" enctype="multipart/form-data">
 				<div class="col-md-3">
 					<select name="fileType" class="btn btn-default selectpicker">
 					    <option value="GL">GL File</option>
@@ -99,6 +100,11 @@
 					<input class="btn btn-default" type="submit" value="Upload File" />
 				</div>
 			</form>
+			
+		<ul>
+<h2>Message : ${message}</h2>
+
+		</ul>
 		  </div>
           <h2 class="sub-header">Section title</h2>
           <div class="table-responsive">
