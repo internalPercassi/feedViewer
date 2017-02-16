@@ -12,6 +12,7 @@
 	<!-- scripts -->
  	<script src="<c:url value="/resources/libraries/jquery-3.1.1.min.js" />" type="text/javascript" ></script>
 	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />" type="text/javascript" ></script>
+	<script src="<c:url value="/resources/js/dashboard-controller.js" />" type="text/javascript" ></script>
 	<script src="<c:url value="/resources/js/data-table.js" />" type="text/javascript" ></script>
 	
 	<!-- css -->
