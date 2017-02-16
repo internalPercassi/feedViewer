@@ -19,14 +19,10 @@
     </servlet-mapping>
      <servlet-mapping>
         <servlet-name>perparser</servlet-name>
-       <!--  <url-pattern>/welcome.jsp</url-pattern>
-        <url-pattern>/welcome.html</url-pattern> -->
         <url-pattern>*.js</url-pattern>
     </servlet-mapping>
      <servlet-mapping>
         <servlet-name>perparser</servlet-name>
-       <!--  <url-pattern>/welcome.jsp</url-pattern>
-        <url-pattern>/welcome.html</url-pattern> -->
         <url-pattern>*.css</url-pattern>
     </servlet-mapping>
 </web-app>
