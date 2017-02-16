@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.BufferedReader;
@@ -26,6 +27,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.stream.Stream;
@@ -48,16 +51,16 @@ public class UploadController implements ServletContextAware {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     //@PostMapping("/upload") // //new annotation since 4.3
-    public String singleFileUpload(@RequestParam("pippo") MultipartFile file, @RequestParam("fileType") String fileType,
-                                   RedirectAttributes redirectAttributes) throws Exception {
+    public ModelAndView singleFileUpload(@RequestParam("upload") MultipartFile file, @RequestParam("fileType") String fileType, RedirectAttributes redirectAttributes) throws Exception {
+    	
     	BufferedWriter bw = null;
     	FileWriter fw = null;
-    	try{
+    	List<Object> data = new ArrayList<Object>();
+    	try
+    	{
+    		
         	InputStream inputStream = file.getInputStream();
         	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        				
-        	
-   
 
             String fullPath = context.getRealPath("/WEB-INF/resources/aGL.csv");
             
@@ -66,63 +69,76 @@ public class UploadController implements ServletContextAware {
             
         	String line = null;
         	
-            switch (fileType) {
-			case "GL":
-				bw.append("GL,INS,PERTINENCY,UNIQUE PRODUCT CODE, DEPOSITOR,STOCKED QTY,BOOKED QTY,ACCOUNTING STATE");
-				bw.append(NEW_LINE_SEPARATOR);
-				break;
-			case "OS":
-				break;
-			case "OPE":	
-				break;
-			case "OBE":
-				break;
-			default:
-				break;
-			}
-        	
+//            switch (fileType)
+//            {
+//			case "GL":
+//				bw.append("GL,INS,PERTINENCY,UNIQUE PRODUCT CODE, DEPOSITOR,STOCKED QTY,BOOKED QTY,ACCOUNTING STATE");
+//				bw.append(NEW_LINE_SEPARATOR);
+//				break;
+//			case "OS":
+//				break;
+//			case "OPE":	
+//				break;
+//			case "OBE":
+//				break;
+//			default:
+//				break;
+//			}
+//        	
         	while ((line = bufferedReader.readLine()) != null)
         	{
-                switch (fileType) {
+        		List<String> rowValues = new ArrayList<>();
+                switch (fileType)
+                {
     			case "GL":
-            		bw.append(line,0,2);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,2,5);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,5,15);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,15,18);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,38,64);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,64,67);
-              		bw.append(COMMA_DELIMITER);
-            		bw.append(line,150,163);
-              		bw.append(COMMA_DELIMITER);
-            		bw.append(line,163,176);
-              		bw.append(COMMA_DELIMITER);
-            		bw.append(line,176,191);
-            		bw.append(NEW_LINE_SEPARATOR);
+    				rowValues.add(line.substring(0, 2));
+    				rowValues.add(line.substring(2, 5));
+    				rowValues.add(line.substring(5, 15));
+    				rowValues.add(line.substring(15, 18));
+    				rowValues.add(line.substring(28, 64));
+    				rowValues.add(line.substring(64, 67));
+    				rowValues.add(line.substring(150, 163));
+    				rowValues.add(line.substring(163, 176));
+    				rowValues.add(line.substring(176, 191));
+    				data.add(rowValues);
+//            		bw.append(line,0,2);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,2,5);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,5,15);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,15,18);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,38,64);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,64,67);
+//              		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,150,163);
+//              		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,163,176);
+//              		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,176,191);
+//            		bw.append(NEW_LINE_SEPARATOR);
     				break;
     			case "OS":
-            		bw.append(line,0,26);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,26,46);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,5,15);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,15,18);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,38,64);
-            		bw.append(COMMA_DELIMITER);
-            		bw.append(line,64,67);
-              		bw.append(COMMA_DELIMITER);
-            		bw.append(line,150,163);
-              		bw.append(COMMA_DELIMITER);
-            		bw.append(line,163,176);
-              		bw.append(COMMA_DELIMITER);
-            		bw.append(line,176,191);
-            		bw.append(NEW_LINE_SEPARATOR);
+//            		bw.append(line,0,26);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,26,46);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,5,15);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,15,18);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,38,64);
+//            		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,64,67);
+//              		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,150,163);
+//              		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,163,176);
+//              		bw.append(COMMA_DELIMITER);
+//            		bw.append(line,176,191);
+//            		bw.append(NEW_LINE_SEPARATOR);
     				
     				break;
     			case "OPE":
@@ -134,16 +150,17 @@ public class UploadController implements ServletContextAware {
     			default:
     				break;
     			}
-
-
         	}
-    	} catch (IOException e) {
+    	} 
+    	catch (IOException e)
+    	{
+    		e.printStackTrace();
+		}
+    	finally
+    	{
 
-			e.printStackTrace();
-
-		} finally {
-
-			try {
+			try
+			{
 
 				if (bw != null)
 					bw.close();
@@ -151,26 +168,31 @@ public class UploadController implements ServletContextAware {
 				if (fw != null)
 					fw.close();
 
-			} catch (IOException ex) {
-
+			} 
+			catch (IOException ex)
+			{
 				ex.printStackTrace();
-
 			}
-
 		}
+    	
+    	 redirectAttributes.addFlashAttribute("some", "thing");
+    
+    	
+		ModelAndView model = new ModelAndView("redirect:" + context.getContextPath());
+		model.addObject("data", data);
 
-    	
-    	
-        return "redirect:/uploadResult";
+		return model;
     }
 
     @GetMapping("/uploadResult")
-    public String uploadStatus() {
+    public String uploadStatus()
+    {
         return "uploadResult";
     }
 
 	@Override
-	public void setServletContext(ServletContext servletContext) {
+	public void setServletContext(ServletContext servletContext)
+	{
 		  this.context = servletContext;
 		
 	}
