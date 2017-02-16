@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RootController {
     @RequestMapping(value = "/PerParser", method = RequestMethod.GET)
     public String root() {
-    	System.out.print("asdasdasdas");
         return "index";
     }
 }
