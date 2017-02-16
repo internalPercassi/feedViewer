@@ -9,115 +9,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
 
+	<!-- scripts -->
  	<script src="<c:url value="/resources/libraries/jquery-3.1.1.min.js" />" type="text/javascript" ></script>
 	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />" type="text/javascript" ></script>
+	
+	<!-- css -->
 	<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" >
+	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
  
-<title>Spring MVC Tutorial Series by Crunchify.com</title>
+<title>PerParser</title>
 </head>
 
-<body data-feedly-mini="yes">
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">Dashboard</a>
+<body>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Help</a>
-          </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">PerParser</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+<!--           <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form> -->
+        </div>
       </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Reports</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Analytics</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Export</a>
-            </li>
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
           </ul>
-
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Nav item</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Nav item again</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">One more nav</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Another nav item</a>
-            </li>
+<!--           <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
           </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul> -->
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
 
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Nav item again</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">One more nav</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Another nav item</a>
-            </li>
-          </ul>
-        </nav>
-
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          <h1>Dashboard</h1>
-
-          <section class="row text-center placeholders">
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <div class="text-muted">Something else</div>
+		  <div class="row placeholders">
+			<form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data">
+			<!-- <form method="POST" action="upload" enctype="multipart/form-data"> -->
+			<div class="col-lg-6">
+			    <div class="input-group">
+			      	<div class="input-group-btn">
+				      <select name="fileType" class="btn selectpicker">
+					    <option value="GL">GL File</option>
+					    <option value="OS">OverSelling</option>
+					    <option value="OPE">OPE</option>
+					    <option value="OBE">OBE</option>
+					  </select>
+			    	</div>
+				    <div class="input-group">
+		                <label class="input-group-btn">
+		                    <span class="btn btn-primary">Browse&hellip; 
+		                     <input type="file" style="display: none;" multiple>
+		                    </span>
+		                </label>
+		                <input type="text" class="form-control" readonly>
+	            	</div>
+			      <!-- <input type="file" class="form-control" placeholder="Search..."> -->
+				  <span class="input-group-btn">
+				    <input class="btn btn-secondary" type="submit" value="Upload File" />
+			      </span>
+			    </div>
+			</div>
+<!-- 			<div class="col-xs-6 col-sm-3 placeholder">
             </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </section>
-
-          <h2>Section title</h2>
+                <input type="text" class="form-control" placeholder="Search...">
+		    	<input type="file" name="pippo" /><br/>
+				<input class="btn btn-default" type="submit" value="Upload File" />
+			</form> -->
+		  </div>
+          <h2 class="sub-header">Section title</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -245,43 +233,8 @@
               </tbody>
             </table>
           </div>
-        </main>
+        </div>
       </div>
     </div>
-</body>
-
-
-
-
-
-
-
-<%-- <body>
-	<br>
-	<div style="text-align:center">
-		<h2>perParser<br> <br>
-		</h2>
-<!-- 		<h3>
-			<a href="welcome.html">Click here to See Welcome Message... </a>(to
-			check Spring MVC Controller... @RequestMapping("/welcome"))
-		</h3> -->
-<!-- 			<form action="action.jsp">
-
-			  <input type="submit" value="Submit">
-			</form> -->
-			
-			
-			<form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data">
-			<form method="POST" action="upload" enctype="multipart/form-data">
-			<select name="fileType">
-			    <option value="GL">GL File</option>
-			    <option value="OS">OverSelling</option>
-			    <option value="OPE">OPE</option>
-			    <option value="OBE">OBE</option>
-			  </select>
-	    		<input type="file" name="pippo" /><br/>
-			    <input class="btn btn-default" type="submit" value="Upload File" />
-			</form>
-	</div>
-</body> --%>
+  </body>
 </html>
