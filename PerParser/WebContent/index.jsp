@@ -12,6 +12,7 @@
 	<!-- scripts -->
  	<script src="<c:url value="/resources/libraries/jquery-3.1.1.min.js" />" type="text/javascript" ></script>
 	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />" type="text/javascript" ></script>
+	<script src="<c:url value="/resources/js/dashboard-controller.js" />" type="text/javascript" ></script>
 	
 	<!-- css -->
 	<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" >
@@ -70,40 +71,32 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
-
 		  <div class="row placeholders">
 			<form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data">
-			<!-- <form method="POST" action="upload" enctype="multipart/form-data"> -->
-			<div class="col-lg-6">
-			    <div class="input-group">
-			      	<div class="input-group-btn">
-				      <select name="fileType" class="btn selectpicker">
+				<div class="col-md-3">
+					<select name="fileType" class="btn btn-default selectpicker">
 					    <option value="GL">GL File</option>
 					    <option value="OS">OverSelling</option>
 					    <option value="OPE">OPE</option>
 					    <option value="OBE">OBE</option>
-					  </select>
-			    	</div>
-				    <div class="input-group">
-		                <label class="input-group-btn">
-		                    <span class="btn btn-primary">Browse&hellip; 
-		                     <input type="file" style="display: none;" multiple>
-		                    </span>
-		                </label>
-		                <input type="text" class="form-control" readonly>
-	            	</div>
-			      <!-- <input type="file" class="form-control" placeholder="Search..."> -->
-				  <span class="input-group-btn">
-				    <input class="btn btn-secondary" type="submit" value="Upload File" />
-			      </span>
-			    </div>
-			</div>
-<!-- 			<div class="col-xs-6 col-sm-3 placeholder">
-            </div>
-                <input type="text" class="form-control" placeholder="Search...">
-		    	<input type="file" name="pippo" /><br/>
-				<input class="btn btn-default" type="submit" value="Upload File" />
-			</form> -->
+				  	</select>
+				</div>
+				<div class="col-md-3">
+					<div class="input-group">
+					    <div class="input-group">
+			                <input type="text" class="form-control" readonly>
+			                <label class="input-group-btn">
+			                    <span class="btn btn-default">Browse&hellip; 
+			                     <input type="file" style="display: none;" name="upload" multiple>
+			                    </span>
+			                </label>
+		            	</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<input class="btn btn-default" type="submit" value="Upload File" />
+				</div>
+			</form>
 		  </div>
           <h2 class="sub-header">Section title</h2>
           <div class="table-responsive">
