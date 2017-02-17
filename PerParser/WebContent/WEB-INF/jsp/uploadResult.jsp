@@ -21,44 +21,41 @@
 	    <link href="<c:url value="/resources/datatable/css/buttons.dataTables.min.css" />" rel="stylesheet" type="text/css" >
 	    <link href="<c:url value="/resources/datatable/css/dataTables.bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 	    
-    <script type="text/javascript">
-    
-    $(document).ready(function() {     
-    	
-    	var data = ${data};
-    	var tmp = data.data;
-    	
-                $('#example').DataTable( {
-                    data:tmp,
-                    dom: 'B<"clear">lfrtip', 
-                    buttons: [
-                        'copy', 'csv', 'excel'
-                    ]
-                } );
-    } );
-    
-    </script>
-    
+	    <script type="text/javascript">
+	    
+		    $(document).ready(function() {     
+		    	
+		    	var data = ${data};
+		    	var tmp = data.data;
+		    	
+		                $('#example').DataTable( {
+		                    data:tmp,
+		                    dom: 'B<"clear">lfrtip', 
+		                    buttons: [
+		                        'copy', 'csv', 'excel'
+		                    ]
+		                } );
+		    } );
+	    
+	    </script>
     </head>
-<body>
-
-<h1>Upload Status</h1>
-<div class="table-responsive col-md-12">
- 	<table id="example" class="display table table-striped table-bordered"  cellspacing="0" width="100%">
-	 	<thead>
-            <tr>
-                <th>GL</th>
-                <th>INS</th>
-                <th>Pertinency Site</th>
-                <th>Pertinency Site Desc</th>
-                <th>Unique product code</th>
-                <th>Depositor</th>
-                <th>Stocked Qty</th>
-                <th>Stocked Qty</th>
-                <th>Accounting State</th>
-            </tr>
-        </thead>
-	</table>
-</div>
-</body>
+	<body>
+		<div class="table-responsive col-md-12">
+		 	<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+			 	<thead>
+		            <tr>
+		                <th>GL</th>
+		                <th>INS</th>
+		                <th>Pertinency Site</th>
+		                <th>Pertinency Site Desc</th>
+		                <th>Unique product code</th>
+		                <th>Depositor</th>
+		                <th>Stocked Qty</th>
+		                <th>Stocked Qty</th>
+		                <th>Accounting State</th>
+		            </tr>
+		        </thead>
+			</table>
+		</div>
+	</body>
 </html>
