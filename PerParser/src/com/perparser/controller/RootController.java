@@ -66,24 +66,19 @@ public class RootController implements ServletContextAware{
 				
 				break;
 			case "OS":
-//            		bw.append(line,0,26);
-//            		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,26,46);
-//            		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,5,15);
-//            		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,15,18);
-//            		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,38,64);
-//            		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,64,67);
-//              		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,150,163);
-//              		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,163,176);
-//              		bw.append(COMMA_DELIMITER);
-//            		bw.append(line,176,191);
-//            		bw.append(NEW_LINE_SEPARATOR);
+				
+				tmplist.add(line.substring(0, 26));
+				tmplist.add(line.substring(26,46));
+				tmplist.add(line.substring(5, 15));
+				tmplist.add(line.substring(15, 18));
+				tmplist.add(line.substring(28, 64));
+				tmplist.add(line.substring(64, 67));
+				tmplist.add(line.substring(150, 160).replaceFirst("^0+(?!$)", ""));
+				tmplist.add(line.substring(163, 173).replaceFirst("^0+(?!$)", ""));
+				tmplist.add(line.substring(176, 191));
+				
+				list.add(tmplist);
+
 				
 				break;
 			case "OPE":
@@ -96,17 +91,19 @@ public class RootController implements ServletContextAware{
 				break;
 			}
     	}
+    	
+    	List<String>  columnList = null;
         switch (fileType)
         {
+        	
 			case "GL":
+				columnList = Arrays.asList("GL", "INS", "Pertinency site", "Pertinency site Desc", "Unique product code", "Depositor", "Stocked Qty", "Booked Qty", "Accounting State");
+				headersList = createHeaderList(columnList);
+				break;
+			case "OS":
 				
-				List<String>  columnList = Arrays.asList("GL", "INS", "Pertinency site", "Pertinency site Desc", "Unique product code ", "Depositor", "Stocked Qty", "Booked Qty", "Accounting State");
-				
-				for (String headerStr : columnList) {
-					JSONObject headerObj = new JSONObject();
-					headerObj.put("title", headerStr);
-					headersList.add(headerObj);
-				}
+				columnList = Arrays.asList("Codice Articolo", "Codice Modello", "Magazzino", "Inventario fisico", "In ordinazione", "Soglia riassortimento");
+				headersList = createHeaderList(columnList);
 				break;
         }
     	
@@ -120,6 +117,18 @@ public class RootController implements ServletContextAware{
 //		model.setViewName("uploadResult.jsp");
     	return "redirect:uploadResult";
 
+    }
+    
+    private JSONArray createHeaderList(List<String> columnList)
+    {
+    	JSONArray headersList = new JSONArray();
+    	
+		for (String headerStr : columnList) {
+			JSONObject headerObj = new JSONObject();
+			headerObj.put("title", headerStr);
+			headersList.add(headerObj);
+		}
+		return headersList;
     }
     
 	public void setServletContext(ServletContext servletContext)
