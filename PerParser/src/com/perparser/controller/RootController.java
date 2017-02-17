@@ -39,12 +39,9 @@ public class RootController implements ServletContextAware{
     	JSONObject obj = new JSONObject();
     	JSONArray tmplist = null;
     	JSONArray list = new JSONArray();
-    	List<String> rowValues = null;
-    		
+	
     	InputStream inputStream = file.getInputStream();
     	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-        String fullPath = context.getRealPath("/WEB-INF/resources/aGL.csv");
 
     	String line = null;
     	while ((line = bufferedReader.readLine()) != null)
@@ -113,6 +110,5 @@ public class RootController implements ServletContextAware{
 	public void setServletContext(ServletContext servletContext)
 	{
 		  this.context = servletContext;
-		
 	}
 }
