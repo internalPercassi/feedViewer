@@ -38,6 +38,7 @@
                 <th>9</th>
             </tr>
         </thead>
+<<<<<<< HEAD
          <tbody>
 			<c:forEach items="${data}" var="DemoNames">
 			    <tr>
@@ -50,4 +51,26 @@
 	</table>
 </div>
 </body>
+=======
+    </table>
+            <script type="text/javascript">
+        $(document).ready(function() {
+            var data = [];
+            data = ${data};
+
+             
+            $('#example').DataTable( {
+            	pagingType: "full_numbers",
+                data:           data,
+                deferRender:    true,
+                scrollY:        50,
+                scrollCollapse: true,
+                scroller:       true
+            } );
+        } );
+        </script>
+         </div>
+        </div> 
+    </body>
+>>>>>>> branch 'master' of https://github.com/internalPercassi/feedViewer.git
 </html>
