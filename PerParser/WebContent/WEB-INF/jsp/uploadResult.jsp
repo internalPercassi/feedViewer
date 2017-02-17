@@ -1,26 +1,4 @@
-<html>
-<body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h1>Upload Status</h1>
-<div class="table-responsive">
-	<table id="myTable" class="table table-striped">
-		<c:forEach items="${data}" var="DemoNames">
-		    <tr>
-		    	<c:forEach items="${DemoNames}" var="col">
-		        	<td>${col}</td>
-		        </c:forEach>
-		    </tr>
-		</c:forEach>
-	</table>
-</div>
-</body>
-</html>
-
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    import="jquery.datatables.model.*"%> --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-    "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <title>Applying jQuery DataTables plugin in the Java Server application</title>
@@ -32,6 +10,7 @@
 	 	<script src="<c:url value="/resources/libraries/jquery-3.1.1.min.js" />" type="text/javascript" ></script>
 		<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />" type="text/javascript" ></script>
 		<script src="<c:url value="/resources/js/dashboard-controller.js" />" type="text/javascript" ></script>
+ 				<script src="<c:url value="/resources/js/upload-controller.js" />" type="text/javascript" ></script>
 <%-- 	<script src="<c:url value="/resources/js/data-table.js" />" type="text/javascript" ></script> --%>
 	<script src="<c:url value="/resources/datatable/js/jquery.dataTables.min.js" />" type="text/javascript" ></script>
 	
@@ -39,42 +18,36 @@
 	<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
 <%-- 	<link href="<c:url value="/resources/css/data-table.css" />" rel="stylesheet" type="text/css" > --%>
-	<script src="<c:url value="/resources/datatable/css/jquery.dataTables.css" />" rel="stylesheet" type="text/css" ></script>
-
+    <link href="<c:url value="/resources/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" type="text/css" >
     </head>
-    <body id="dt_example">
-        <div id="container">
-            <div id="demo_jui">
+<body>
 
-                
-<table id="example" class="display nowrap" cellspacing="0" width="100%">
-        <thead>
+<h1>Upload Status</h1>
+<div class="table-responsive">
+ 	<table id="example" class="display table table-striped">
+	 	<thead>
             <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>ZIP / Post code</th>
-                <th>Country</th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
             </tr>
         </thead>
-    </table>
-            <script type="text/javascript">
-        $(document).ready(function() {
-            var data = [];
-            data = ${data};
-
-             
-            $('#example').DataTable( {
-            	"pagingType": "full_numbers",
-                data:           data,
-                deferRender:    true,
-                scrollY:        50,
-                scrollCollapse: true,
-                scroller:       true
-            } );
-        } );
-        </script>
-         </div>
-        </div> 
-    </body>
+         <tbody>
+			<c:forEach items="${data}" var="DemoNames">
+			    <tr>
+			    	<c:forEach items="${DemoNames}" var="col">
+			        	<td>${col}</td>
+			        </c:forEach>
+			    </tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>
+</body>
 </html>
