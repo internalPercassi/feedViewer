@@ -26,10 +26,13 @@
 		    $(document).ready(function() {     
 		    	
 		    	var data = ${data};
+			
+				  /* var dataObject = eval('[{"COLUMNS":["NAME","COUNTY"],"DATA":[["John Doe","Fresno"],["Billy","Fresno"],["Tom","Kern"],["King Smith","Kings"]]}]'); */
 		    	var tmp = data.data;
 		    	
 		                $('#example').DataTable( {
-		                    data:tmp,
+		                    data:data.data,
+		                    columns: data.headers,
 		                    dom: 'B<"clear">lfrtip', 
 		                    buttons: [
 		                        'copy', 'csv', 'excel'
@@ -42,8 +45,13 @@
 	<body>
 		<div class="table-responsive col-md-12">
 		 	<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-			 	<thead>
-		            <tr>
+<%-- 			 	<thead>
+		           <tr>
+ 				<c:forEach items="${headers}" var="header">
+				    <th>${header}</th>
+				</c:forEach>  --%>
+				</tr>
+<!--  				 	<tr>		            	
 		                <th>GL</th>
 		                <th>INS</th>
 		                <th>Pertinency Site</th>
@@ -53,8 +61,8 @@
 		                <th>Stocked Qty</th>
 		                <th>Stocked Qty</th>
 		                <th>Accounting State</th>
-		            </tr>
-		        </thead>
+		            </tr> -->
+		    <!--     </thead> -->
 			</table>
 		</div>
 	</body>

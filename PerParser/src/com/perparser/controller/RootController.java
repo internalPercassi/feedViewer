@@ -3,6 +3,7 @@ package com.perparser.controller;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletContext;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,7 @@ public class RootController implements ServletContextAware{
     	JSONObject obj = new JSONObject();
     	JSONArray tmplist = null;
     	JSONArray list = new JSONArray();
+    	JSONArray headersList = new JSONArray();
 	
     	InputStream inputStream = file.getInputStream();
     	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -94,9 +96,22 @@ public class RootController implements ServletContextAware{
 				break;
 			}
     	}
-
+        switch (fileType)
+        {
+			case "GL":
+				
+				List<String>  columnList = Arrays.asList("GL", "INS", "Pertinency site", "Pertinency site Desc", "Unique product code ", "Depositor", "Stocked Qty", "Booked Qty", "Accounting State");
+				
+				for (String headerStr : columnList) {
+					JSONObject headerObj = new JSONObject();
+					headerObj.put("title", headerStr);
+					headersList.add(headerObj);
+				}
+				break;
+        }
     	
     	obj.put("data", list);
+		obj.put("headers", headersList);
 		
     	redirectAttributes.addFlashAttribute("data", obj);
     	
