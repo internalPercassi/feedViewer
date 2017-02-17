@@ -27,7 +27,7 @@
     	var tmp = data.data;
     	
                 $('#example').DataTable( {
-                    "data":tmp,
+                    "data":tmp
                     
                 } );
     } );
@@ -38,7 +38,7 @@
 
 <h1>Upload Status</h1>
 <div class="table-responsive">
- 	<table id="example" class="display table table-striped">
+ 	<table id="example" class="table table-striped table-bordered">
 	 	<thead>
             <tr>
                 <th>GL</th>
