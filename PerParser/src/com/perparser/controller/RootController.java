@@ -37,7 +37,7 @@ public class RootController implements ServletContextAware{
     
     
     
-    @RequestMapping(value = "/uploadmhtsos", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     //@PostMapping("/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("upload") MultipartFile file, @RequestParam("fileType") String fileType, RedirectAttributes redirectAttributes) throws Exception {
     	
@@ -86,8 +86,8 @@ public class RootController implements ServletContextAware{
     				rowValues.add(line.substring(15, 18));
     				rowValues.add(line.substring(28, 64));
     				rowValues.add(line.substring(64, 67));
-    				rowValues.add(line.substring(150, 163));
-    				rowValues.add(line.substring(163, 176));
+    				rowValues.add(line.substring(150, 163).replaceFirst("^0+(?!$)", ""));
+    				rowValues.add(line.substring(163, 176).replaceFirst("^0+(?!$)", ""));
     				rowValues.add(line.substring(176, 191));
     				data.add(rowValues);
 //            		bw.append(line,0,2);
