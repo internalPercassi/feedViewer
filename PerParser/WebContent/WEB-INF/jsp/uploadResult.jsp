@@ -1,27 +1,4 @@
 <html>
-<body>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h1>Upload Status</h1>
-<div class="table-responsive">
-	<table id="myTable" class="table table-striped">
-		<c:forEach items="${data}" var="DemoNames">
-		    <tr>
-		    	<c:forEach items="${DemoNames}" var="col">
-		        	<td>${col}</td>
-		        </c:forEach>
-		    </tr>
-		</c:forEach>
-	</table>
-</div>
-</body>
-</html>
-
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    import="jquery.datatables.model.*"%> --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
     <head>
         <title>Applying jQuery DataTables plugin in the Java Server application</title>
 <!--         <link href="media/dataTables/demo_page.css" rel="stylesheet" type="text/css" />
@@ -40,41 +17,33 @@
 	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
 <%-- 	<link href="<c:url value="/resources/css/data-table.css" />" rel="stylesheet" type="text/css" > --%>
 	<script src="<c:url value="/resources/datatable/css/jquery.dataTables.css" />" rel="stylesheet" type="text/css" ></script>
-
+    <script type="text/javascript">
+	   $(document).ready(function() {
+	
+	
+	        
+	       $('#example').DataTable( {
+	
+	       } );
+	   } );
+   </script>
     </head>
-    <body id="dt_example">
-        <div id="container">
-            <div id="demo_jui">
-
-                
-<table id="example" class="display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>ZIP / Post code</th>
-                <th>Country</th>
-            </tr>
-        </thead>
-    </table>
-            <script type="text/javascript">
-        $(document).ready(function() {
-            var data = [];
-            data = ${data};
-
-             
-            $('#example').DataTable( {
-            	pagingType: "full_numbers",
-                data:           data,
-                deferRender:    true,
-                scrollY:        50,
-                scrollCollapse: true,
-                scroller:       true
-            } );
-        } );
-        </script>
-         </div>
-        </div> 
-    </body>
+<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<h1>Upload Status</h1>
+<div class="table-responsive">
+	<table id="example" class="table table-striped">
+		<c:forEach items="${data}" var="DemoNames">
+		    <tr>
+		    	<c:forEach items="${DemoNames}" var="col">
+		        	<td>${col}</td>
+		        </c:forEach>
+		    </tr>
+		</c:forEach>
+	</table>
+</div>
+</body>
 </html>
+
+
+
