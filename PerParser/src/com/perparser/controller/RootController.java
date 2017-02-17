@@ -37,7 +37,7 @@ public class RootController implements ServletContextAware{
     
     
     
-    @RequestMapping(value = "takis", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadmhtsos", method = RequestMethod.POST)
     //@PostMapping("/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("upload") MultipartFile file, @RequestParam("fileType") String fileType, RedirectAttributes redirectAttributes) throws Exception {
     	
