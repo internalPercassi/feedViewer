@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -19,6 +20,8 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 @Controller
 @RequestMapping("/")
@@ -43,7 +46,10 @@ public class RootController implements ServletContextAware{
     	
     	BufferedWriter bw = null;
     	FileWriter fw = null;
-    	List<Object> data = new ArrayList<Object>();
+    	//List<List<String>> data = new ArrayList<List<String>>();
+    	JSONObject obj = new JSONObject();
+    	JSONArray tmplist = null;
+    	JSONArray list = new JSONArray();
     	List<String> rowValues = null;
     	try
     	{
@@ -76,6 +82,7 @@ public class RootController implements ServletContextAware{
 //        	
         	while ((line = bufferedReader.readLine()) != null)
         	{
+        		tmplist =  new JSONArray();
         		rowValues = new ArrayList<>();
                 switch (fileType)
                 {
@@ -89,7 +96,22 @@ public class RootController implements ServletContextAware{
     				rowValues.add(line.substring(150, 163).replaceFirst("^0+(?!$)", ""));
     				rowValues.add(line.substring(163, 176).replaceFirst("^0+(?!$)", ""));
     				rowValues.add(line.substring(176, 191));
-    				data.add(rowValues);
+    				
+    				
+    				tmplist.add(line.substring(0, 2));
+    				tmplist.add(line.substring(2, 5));
+    				tmplist.add(line.substring(5, 15));
+    				tmplist.add(line.substring(15, 18));
+    				tmplist.add(line.substring(28, 64));
+    				tmplist.add(line.substring(64, 67));
+    				tmplist.add(line.substring(150, 160).replaceFirst("^0+(?!$)", ""));
+    				tmplist.add(line.substring(163, 173).replaceFirst("^0+(?!$)", ""));
+    				tmplist.add(line.substring(176, 191));
+    				
+    				
+    				list.add(tmplist);
+//    				data.add(rowValues);
+    			
 //            		bw.append(line,0,2);
 //            		bw.append(COMMA_DELIMITER);
 //            		bw.append(line,2,5);
@@ -164,9 +186,12 @@ public class RootController implements ServletContextAware{
 			}
 		}
     	
-
+//    	HashMap<String, List<Object>> test = new HashMap<>();
+//    	
+//    	test.put("data", data);
+    	obj.put("data", list);
 		
-    	redirectAttributes.addFlashAttribute("data", data);
+    	redirectAttributes.addFlashAttribute("data", obj);
     	
 //		ModelAndView model = new ModelAndView();
 //		model.addObject("message", "skata");
