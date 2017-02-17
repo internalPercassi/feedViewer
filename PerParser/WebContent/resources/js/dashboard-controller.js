@@ -23,9 +23,6 @@ $(function() {
           }
 
       });
-      
-      $('#myTable').DataTable();
-      
   });
   
 });
