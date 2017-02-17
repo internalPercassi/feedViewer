@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/")
 public class RootController implements ServletContextAware{
 	
 	private ServletContext context;
@@ -36,13 +37,14 @@ public class RootController implements ServletContextAware{
     
     
     
-    @RequestMapping(value = "/uploadmhtsos", method = RequestMethod.POST)
+    @RequestMapping(value = "takis", method = RequestMethod.POST)
     //@PostMapping("/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("upload") MultipartFile file, @RequestParam("fileType") String fileType, RedirectAttributes redirectAttributes) throws Exception {
     	
     	BufferedWriter bw = null;
     	FileWriter fw = null;
     	List<Object> data = new ArrayList<Object>();
+    	List<String> rowValues = null;
     	try
     	{
     		
@@ -74,7 +76,7 @@ public class RootController implements ServletContextAware{
 //        	
         	while ((line = bufferedReader.readLine()) != null)
         	{
-        		List<String> rowValues = new ArrayList<>();
+        		rowValues = new ArrayList<>();
                 switch (fileType)
                 {
     			case "GL":
@@ -162,9 +164,14 @@ public class RootController implements ServletContextAware{
 			}
 		}
     	
-		ModelAndView model = new ModelAndView("/");
-		model.addObject("data", data);
-    	return "redirect:/index.jsp";
+
+		
+    	redirectAttributes.addFlashAttribute("data", data);
+    	
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("message", "skata");
+//		model.setViewName("uploadResult.jsp");
+    	return "redirect:uploadResult";
 
     	
     }
