@@ -1,9 +1,0 @@
-$(document).ready(function() {          
-            $('#example').DataTable( {
-            	"pagingType": "full_numbers",
-                deferRender:    true,
-                scrollY:        400,
-                scrollCollapse: true,
-                scroller:       true
-            } );
-} );

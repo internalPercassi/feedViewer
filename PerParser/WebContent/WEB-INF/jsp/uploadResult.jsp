@@ -19,6 +19,20 @@
 	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
 <%-- 	<link href="<c:url value="/resources/css/data-table.css" />" rel="stylesheet" type="text/css" > --%>
     <link href="<c:url value="/resources/datatable/css/jquery.dataTables.min.css" />" rel="stylesheet" type="text/css" >
+    <script type="text/javascript">
+    
+    $(document).ready(function() {     
+    	
+    	var data = ${data};
+    	var tmp = data.data;
+    	
+                $('#example').DataTable( {
+                    "data":tmp,
+                    
+                } );
+    } );
+    
+    </script>
     </head>
 <body>
 
@@ -27,26 +41,17 @@
  	<table id="example" class="display table table-striped">
 	 	<thead>
             <tr>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-                <th>7</th>
-                <th>8</th>
-                <th>9</th>
+                <th>GL</th>
+                <th>INS</th>
+                <th>Pertinency Site</th>
+                <th>Pertinency Site Desc</th>
+                <th>Unique product code</th>
+                <th>Depositor</th>
+                <th>Stocked Qty</th>
+                <th>Stocked Qty</th>
+                <th>Accounting State</th>
             </tr>
         </thead>
-         <tbody>
-			<c:forEach items="${data}" var="DemoNames">
-			    <tr>
-			    	<c:forEach items="${DemoNames}" var="col">
-			        	<td>${col}</td>
-			        </c:forEach>
-			    </tr>
-			</c:forEach>
-		</tbody>
 	</table>
 </div>
 </body>
