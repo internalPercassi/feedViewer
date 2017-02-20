@@ -18,17 +18,20 @@
 	</table>
 </div>
 
-<%-- <script src="<c:url value="/resources/datatable/js/jquery.dataTables.min.js" />" type="text/javascript" ></script> --%>
 <script src="<c:url value="/resources/datatable/js/dataTables.bootstrap.min.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/dataTables.buttons.min.js" />" type="text/javascript" ></script>
+<script src="<c:url value="/resources/datatable/js/buttons.bootstrap.min.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/buttons.flash.min.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/jszip.min.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/pdfmake.min.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/vfs_fonts.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/buttons.html5.min.js" />" type="text/javascript" ></script>
 <script src="<c:url value="/resources/datatable/js/buttons.print.min.js" />" type="text/javascript" ></script>
+<script src="<c:url value="/resources/datatable/js/buttons.colVis.min.js" />" type="text/javascript" ></script>
+
 
 <link href="<c:url value="/resources/datatable/css/buttons.dataTables.min.css" />" rel="stylesheet" type="text/css" >
+<link href="<c:url value="/resources/datatable/css/buttons.bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 <link href="<c:url value="/resources/datatable/css/dataTables.bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 
 <script type="text/javascript">
