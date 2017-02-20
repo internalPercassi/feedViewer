@@ -20,11 +20,9 @@
 		<!-- css -->
 		<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 		<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
-<%--  		<link href="<c:url value="/resources/css/data-table.css" />" rel="stylesheet" type="text/css" > --%>
 	</head>
 	  
 	<body>
-	
 			<section id="top-menu">
 	            <tiles:insertAttribute name="topMenu" />
 	        </section>
