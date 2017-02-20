@@ -52,7 +52,7 @@ public class UploadController implements ServletContextAware {
     //@PostMapping("/upload") // //new annotation since 4.3
     public ModelAndView singleFileUpload(@RequestParam("upload") MultipartFile file, @RequestParam("fileType") String fileType, RedirectAttributes redirectAttributes) throws Exception {
     	
-    	BufferedWriter bw = null;
+    	/*BufferedWriter bw = null;
     	FileWriter fw = null;
     	List<Object> data = new ArrayList<Object>();
     	try
@@ -61,7 +61,7 @@ public class UploadController implements ServletContextAware {
         	InputStream inputStream = file.getInputStream();
         	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-            String fullPath = context.getRealPath("/WEB-INF/resources/aGL.csv");
+     
             
             fw = new FileWriter(fullPath, false);
             bw = new BufferedWriter(fw);
@@ -159,12 +159,12 @@ public class UploadController implements ServletContextAware {
 		}
     	
     	 redirectAttributes.addFlashAttribute("some", "thing");
-    
+    */
     	
-		ModelAndView model = new ModelAndView("redirect:" + context.getContextPath());
-		model.addObject("data", data);
+	/*	ModelAndView model = new ModelAndView("redirect:" + context.getContextPath());
+		model.addObject("data", data);*/
 
-		return model;
+		return new ModelAndView();
     }
 
     @GetMapping("/uploadResult")

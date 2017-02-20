@@ -32,19 +32,24 @@
 <link href="<c:url value="/resources/datatable/css/dataTables.bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 
 <script type="text/javascript">
-
-$(document).ready(function() {     
-	
-	var data = ${data};
-	var tmp = data.data;
-	
-    $('#example').DataTable( {
-        data:tmp,
-        dom: 'B<"clear">lfrtip', 
-        buttons: [
-            'copy', 'csv', 'excel'
-        ]
-    });
-});
-
-</script>
+	    
+		    $(document).ready(function() {     
+		    	
+			<c:if test="${not empty data}">
+				
+				var data = ${data}
+			
+	            $('#example').DataTable( {
+	                data:data.data,
+	                columns: data.headers,
+	                dom: 'B<"clear">lfrtip', 
+	                buttons: [
+	                    'copy', 'csv', 'excel'
+	                ]
+	            } );
+				
+			</c:if>
+		    	
+		    } );
+	    
+	    </script>
