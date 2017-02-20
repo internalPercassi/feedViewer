@@ -44,74 +44,74 @@ public class RootController implements ServletContextAware{
 	
     	InputStream inputStream = file.getInputStream();
     	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-    	String line = null;
-    	while ((line = bufferedReader.readLine()) != null)
+    	
+    	try
+    	{	
+	    	String line = null;
+	    	while ((line = bufferedReader.readLine()) != null)
+	    	{
+	    		tmplist =  new JSONArray();
+	            switch (fileType)
+	            {
+				case "GL":
+					tmplist.add(line.substring(0, 2));
+					tmplist.add(line.substring(2, 5));
+					tmplist.add(line.substring(5, 15));
+					tmplist.add(line.substring(15, 18));
+					tmplist.add(line.substring(28, 64));
+					tmplist.add(line.substring(64, 67));
+					tmplist.add(line.substring(150, 160).replaceFirst("^0+(?!$)", ""));
+					tmplist.add(line.substring(163, 173).replaceFirst("^0+(?!$)", ""));
+					tmplist.add(line.substring(176, 191));					
+					list.add(tmplist);					
+					break;
+				case "OS":					
+					tmplist.add(line.substring(0, 26));
+					tmplist.add(line.substring(26,46));
+					tmplist.add(line.substring(46, 56));
+					tmplist.add(line.substring(56, 68));
+					tmplist.add(line.substring(68, 80));
+					tmplist.add(line.substring(86, 92));		
+					list.add(tmplist);					
+					break;
+				case "OPE":					
+					break;
+				case "OBE":					
+					break;
+				default:
+					break;
+				}
+	    	}
+	    	
+	    	List<String>  columnList = null;
+	        switch (fileType)
+	        {
+	        	
+				case "GL":
+					columnList = Arrays.asList("GL", "INS", "Pertinency site", "Pertinency site Desc", "Unique product code", "Depositor", "Stocked Qty", "Booked Qty", "Accounting State");
+					headersList = createHeaderList(columnList);
+					obj.put("title", "Stocks File View");
+					break;
+				case "OS":
+					
+					columnList = Arrays.asList("Codice Articolo", "Codice Modello", "Magazzino", "Inventario fisico", "In ordinazione", "Soglia riassortimento");
+					headersList = createHeaderList(columnList);
+					obj.put("title", "Overselling File View");
+					break;
+	        }
+	    	
+	    	obj.put("data", list);
+			obj.put("headers", headersList);
+			
+	    
+	    }
+    	catch(Exception e)
     	{
-    		tmplist =  new JSONArray();
-            switch (fileType)
-            {
-			case "GL":
-				tmplist.add(line.substring(0, 2));
-				tmplist.add(line.substring(2, 5));
-				tmplist.add(line.substring(5, 15));
-				tmplist.add(line.substring(15, 18));
-				tmplist.add(line.substring(28, 64));
-				tmplist.add(line.substring(64, 67));
-				tmplist.add(line.substring(150, 160).replaceFirst("^0+(?!$)", ""));
-				tmplist.add(line.substring(163, 173).replaceFirst("^0+(?!$)", ""));
-				tmplist.add(line.substring(176, 191));
-				
-				list.add(tmplist);
-				
-				break;
-			case "OS":
-				
-				tmplist.add(line.substring(0, 26));
-				tmplist.add(line.substring(26,46));
-				tmplist.add(line.substring(5, 15));
-				tmplist.add(line.substring(15, 18));
-				tmplist.add(line.substring(28, 64));
-				tmplist.add(line.substring(64, 67));
-				tmplist.add(line.substring(150, 160).replaceFirst("^0+(?!$)", ""));
-				tmplist.add(line.substring(163, 173).replaceFirst("^0+(?!$)", ""));
-				tmplist.add(line.substring(176, 191));
-				
-				list.add(tmplist);
-
-				
-				break;
-			case "OPE":
-				
-				break;
-			case "OBE":
-				
-				break;
-			default:
-				break;
-			}
+    		obj.put("data", list);
+    		obj.put("title", "Invalid File");
     	}
     	
-    	List<String>  columnList = null;
-        switch (fileType)
-        {
-        	
-			case "GL":
-				columnList = Arrays.asList("GL", "INS", "Pertinency site", "Pertinency site Desc", "Unique product code", "Depositor", "Stocked Qty", "Booked Qty", "Accounting State");
-				headersList = createHeaderList(columnList);
-				break;
-			case "OS":
-				
-				columnList = Arrays.asList("Codice Articolo", "Codice Modello", "Magazzino", "Inventario fisico", "In ordinazione", "Soglia riassortimento");
-				headersList = createHeaderList(columnList);
-				break;
-        }
-    	
-    	obj.put("data", list);
-		obj.put("headers", headersList);
-		
     	redirectAttributes.addFlashAttribute("data", obj);
-    	
 //		ModelAndView model = new ModelAndView();
 //		model.addObject("message", "skata");
 //		model.setViewName("uploadResult.jsp");

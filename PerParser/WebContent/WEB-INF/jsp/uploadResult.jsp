@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
     <head>
 	 	<script src="<c:url value="/resources/libraries/jquery-3.1.1.min.js" />" type="text/javascript" ></script>
@@ -25,44 +26,32 @@
 	    
 		    $(document).ready(function() {     
 		    	
-		    	var data = ${data};
+			<c:if test="${not empty data}" >
+				
+				var data = ${data}
 			
-				  /* var dataObject = eval('[{"COLUMNS":["NAME","COUNTY"],"DATA":[["John Doe","Fresno"],["Billy","Fresno"],["Tom","Kern"],["King Smith","Kings"]]}]'); */
-		    	var tmp = data.data;
+	            $('#example').DataTable( {
+	                data:data.data,
+	                columns: data.headers,
+	                dom: 'B<"clear">lfrtip', 
+	                buttons: [
+	                    'copy', 'csv', 'excel'
+	                ]
+	            } );
+			
+			
+			</c:if>
+
 		    	
-		                $('#example').DataTable( {
-		                    data:data.data,
-		                    columns: data.headers,
-		                    dom: 'B<"clear">lfrtip', 
-		                    buttons: [
-		                        'copy', 'csv', 'excel'
-		                    ]
-		                } );
+
 		    } );
 	    
 	    </script>
     </head>
 	<body>
+	<h1>${data.title}</h1>
 		<div class="table-responsive col-md-12">
 		 	<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-<%-- 			 	<thead>
-		           <tr>
- 				<c:forEach items="${headers}" var="header">
-				    <th>${header}</th>
-				</c:forEach>  --%>
-				</tr>
-<!--  				 	<tr>		            	
-		                <th>GL</th>
-		                <th>INS</th>
-		                <th>Pertinency Site</th>
-		                <th>Pertinency Site Desc</th>
-		                <th>Unique product code</th>
-		                <th>Depositor</th>
-		                <th>Stocked Qty</th>
-		                <th>Stocked Qty</th>
-		                <th>Accounting State</th>
-		            </tr> -->
-		    <!--     </thead> -->
 			</table>
 		</div>
 	</body>

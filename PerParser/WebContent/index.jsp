@@ -20,12 +20,9 @@
 	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
 	<link href="<c:url value="/resources/css/data-table.css" />" rel="stylesheet" type="text/css" >
  
-<title>PerParser</title>
+	<title>PerParser</title>
 </head>
-
-
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -43,9 +40,6 @@
             <li><a href="#">Settings</a></li>
             <li><a href="#">Help</a></li>
           </ul>
-<!--           <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form> -->
         </div>
       </div>
     </nav>
@@ -97,7 +91,7 @@
 					</div>
 				</div>
 				<div class="col-md-3">
-					<input class="btn btn-default" type="submit" value="Upload File" />
+					<input class="btn btn-default" id="uploadBtn" type="submit" value="Upload File" />
 				</div>
 			</form>
 			
