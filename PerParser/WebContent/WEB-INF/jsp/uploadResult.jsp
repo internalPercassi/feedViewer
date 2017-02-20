@@ -26,7 +26,7 @@
 	    
 		    $(document).ready(function() {     
 		    	
-			<c:if test="${not empty data}" >
+			<c:if test="${not empty data}">
 				
 				var data = ${data}
 			
@@ -38,8 +38,7 @@
 	                    'copy', 'csv', 'excel'
 	                ]
 	            } );
-			
-			
+				
 			</c:if>
 
 		    	
@@ -50,9 +49,11 @@
     </head>
 	<body>
 	<h1>${data.title}</h1>
-		<div class="table-responsive col-md-12">
-		 	<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
-			</table>
-		</div>
+		<c:if test="${fn:length(data.data) gt 0}" >
+			<div class="table-responsive col-md-12">
+			 	<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+				</table>
+			</div>
+		</c:if>
 	</body>
 </html>
