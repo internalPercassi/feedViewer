@@ -12,7 +12,6 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -69,22 +68,6 @@ public class UploadController implements ServletContextAware {
             
         	String line = null;
         	
-//            switch (fileType)
-//            {
-//			case "GL":
-//				bw.append("GL,INS,PERTINENCY,UNIQUE PRODUCT CODE, DEPOSITOR,STOCKED QTY,BOOKED QTY,ACCOUNTING STATE");
-//				bw.append(NEW_LINE_SEPARATOR);
-//				break;
-//			case "OS":
-//				break;
-//			case "OPE":	
-//				break;
-//			case "OBE":
-//				break;
-//			default:
-//				break;
-//			}
-//        	
         	while ((line = bufferedReader.readLine()) != null)
         	{
         		List<String> rowValues = new ArrayList<>();
