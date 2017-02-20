@@ -24,7 +24,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 @Controller
-@RequestMapping("/")
 public class RootController implements ServletContextAware{
 	
 	private ServletContext context;
@@ -196,8 +195,8 @@ public class RootController implements ServletContextAware{
 //		ModelAndView model = new ModelAndView();
 //		model.addObject("message", "skata");
 //		model.setViewName("uploadResult.jsp");
-    	return "redirect:uploadResult";
-
+    	//return "redirect:uploadResult";
+    	return "redirect:/";
     	
     }
     
