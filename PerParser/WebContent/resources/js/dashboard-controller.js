@@ -10,7 +10,8 @@ $(function() {
 
   // We can watch for our custom `fileselect` event like this
   $(document).ready( function() {
-	 	  
+
+	  
 	  var input = $(this).parents('.input-group').find(':text');
 	  
 	  if(!input.val())

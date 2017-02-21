@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <html>
@@ -11,7 +11,7 @@
 
 	<!-- scripts -->
  	<script src="<c:url value="/resources/libraries/jquery-3.1.1.min.js" />" type="text/javascript" ></script>
-	<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />" type="text/javascript" ></script>
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />" type="text/javascript" ></script>
 	<script src="<c:url value="/resources/js/dashboard-controller.js" />" type="text/javascript" ></script>
 	<script src="<c:url value="/resources/js/data-table.js" />" type="text/javascript" ></script>
 	
@@ -19,7 +19,33 @@
 	<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css" >
 	<link href="<c:url value="/resources/css/data-table.css" />" rel="stylesheet" type="text/css" >
- 
+ 	    <script type="text/javascript">
+	    
+		    $(document).ready(function() {     
+		    	
+			
+			<c:if test="${not empty data}">
+				
+				var data = ${data}
+			
+	            $('#example').DataTable( {
+	                data:data.data,
+	                columns: data.headers,
+	                dom: 'B<"clear">lfrtip', 
+	                buttons: [
+	                    'copy', 'csv', 'excel'
+	                ]
+	            } );
+				
+			</c:if>
+				
+			
+
+		    	
+
+		    } );
+	    
+	    </script>
 	<title>PerParser</title>
 </head>
 <body>
@@ -53,18 +79,6 @@
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
-<!--           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul> -->
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
@@ -100,19 +114,12 @@
 		</ul>
 		  </div>
           <h2 class="sub-header">Section title</h2>       
-             
-          
-         <%--  <c:if test="${not empty data}"> --%>
-	          <div class="table-responsive">
-	            <table class="table table-striped">
-					<c:forEach items="${data}" var="DemoNames">
-					    <tr>
-					        <td>${DemoNames}</td>
-					    </tr>
-					</c:forEach>
-	            </table>
-	          </div>
- <%--          </c:if> --%>
+          		<c:if test="${fn:length(data.data) gt 0}" >
+			<div class="table-responsive col-md-12">
+			 	<table id="example" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+				</table>
+			</div>
+		</c:if>
         </div>
       </div>
     </div>
