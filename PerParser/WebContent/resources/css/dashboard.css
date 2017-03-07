@@ -106,7 +106,12 @@ body {
 
 
 tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-    }
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+#dataGrid_length>label {
+    right: 300px;
+    position: absolute;
+}
