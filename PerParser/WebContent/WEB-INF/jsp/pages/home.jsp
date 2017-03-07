@@ -4,6 +4,9 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page isELIgnored="false" %>
 
+<script src="<c:url value="/resources/js/dashboard-controller.js" />" type="text/javascript" ></script>
+
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h1 class="page-header">Dashboard</h1>
 <div class="row placeholders">
@@ -12,8 +15,6 @@
 	<select name="fileType" class="btn btn-default selectpicker">
 	    <option value="GL">GL File</option>
 	    <option value="OS">OverSelling</option>
-	    <option value="OPE">OPE</option>
-	    <option value="OBE">OBE</option>
   	</select>
 </div>
 <div class="col-md-3">
@@ -29,12 +30,12 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-		<input class="btn btn-default" type="submit" value="Upload File" />
+		<input id="uploadBtn" class="btn btn-default" type="submit" value="Upload File" />
 	</div>
 </form>
 </div>
+	<h2 class="sub-header">${data.title}</h2>
 	<c:if test="${fn:length(data.data) gt 0}">
-		<h2 class="sub-header">Stock List</h2>
 		<jsp:include page="/WEB-INF/jsp/tiles/partials/fileSearchResultGrid.jsp" />
 	</c:if>
 </div>

@@ -25,6 +25,7 @@ import org.json.simple.JSONObject;
 
 
 @Controller
+@RequestMapping("/")
 public class RootController implements ServletContextAware{
     
     private ServletContext context;
@@ -85,10 +86,6 @@ public class RootController implements ServletContextAware{
                     tmplist.add(line.substring(68, 80));
                     tmplist.add(line.substring(86, 92));        
                     list.add(tmplist);                  
-                    break;
-                case "OPE":                   
-                    break;
-                case "OBE":                   
                     break;
                 default:
                     break;
