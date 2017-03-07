@@ -69,9 +69,7 @@ $.fn.dataTable.ext.search.push(
 	                data:data.data,
 	                columns: data.headers,
 	                dom: 'B<"clear">lfrtip', 
-	                buttons: [
-	                    'copy', 'csv', 'excel'
-	                ]
+	                buttons: [ 'copy', 'csv' ]
 	           });
 
 			   $("#dataGrid").append( $('<tfoot/>').append( $("#dataGrid thead tr").clone() ) );
@@ -79,7 +77,7 @@ $.fn.dataTable.ext.search.push(
 	            // Setup - add a text input to each footer cell
                $('#dataGrid tfoot th').each( function (i) {
 			        var title = $('#dataGrid thead th').eq( $(this).index() ).text();
-			        $(this).html( '<input type="text" placeholder="Search '+title+'" data-index="'+i+'" />' );
+			        $(this).html( '<input type="text" placeholder="'+title+'" data-index="'+i+'" />' );
 			   });
 	            
                // Apply the search
