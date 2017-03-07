@@ -1,5 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<table border="0" cellspacing="5" cellpadding="5">
+        <tbody><tr>
+            <td>Minimum Stocked Qty:</td>
+            <td><input type="text" id="minSQty" name="minSQty"></td>
+        </tr>
+        <tr>
+            <td>Minimum Booked Qty:</td>
+            <td><input type="text" id="minBQty" name="minBQty"></td>
+        </tr>
+    </tbody></table>
 <div class="table-responsive col-md-12">
  	<table id="dataGrid" class="display table table-striped table-bordered order-column"  cellspacing="0" width="100%"></table>
 </div>
@@ -21,6 +31,33 @@
 <link href="<c:url value="/resources/datatable/css/dataTables.bootstrap.min.css" />" rel="stylesheet" type="text/css" >
 
 <script type="text/javascript">
+
+$.fn.dataTable.ext.search.push(
+	    function( settings, data, dataIndex ) {
+	        var minBQty = parseInt( $('#minBQty').val(), 10 );
+	        var minSQty = parseInt( $('#minSQty').val(), 10 );
+	        var stockedQty = parseFloat( data[6] ) || 0; 
+	        var bookedQty = parseFloat( data[7] ) || 0; 
+	 
+	        if( isNaN( minBQty ) && isNaN( minSQty ) )
+	        	return true;
+	        else
+	        {
+	        	if((!isNaN( minBQty ) && !isNaN( minSQty ) && minBQty <= bookedQty && minSQty <= stockedQty))
+	        		return true;
+	        	else 
+	        	{
+	        		if(!isNaN( minBQty ) && !isNaN( minSQty ))
+	        			return false;
+		        	if(	(!isNaN( minBQty ) && minBQty <= bookedQty) ||
+		        		(!isNaN(minSQty) && minSQty <= stockedQty))
+		        		return true;
+		        	else
+		        		false;
+	        	}
+	        }
+	    }
+	);
 	    
 		    $(document).ready(function() {     
 		    	
@@ -52,6 +89,14 @@
 			            .search( this.value )
 			            .draw();
 			    });
+               
+               $('#minBQty, #minSQty').keyup( function() {
+                   table.draw();
+               } );
+               
+               
+               
+               
                
 			</c:if>
 		    	
