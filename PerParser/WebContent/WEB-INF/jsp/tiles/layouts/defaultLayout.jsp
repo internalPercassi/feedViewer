@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page isELIgnored="false" %>
 <html>
@@ -7,6 +8,8 @@
 	<head>
 	   <!--  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
 	    <title><tiles:getAsString name="title" /></title>
+	    <link rel="icon" type="image/x-icon" href="<s:url value="/resources/images/logo-p.png"/>" />
+
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">    
