@@ -1,15 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<table border="0" cellspacing="5" cellpadding="5">
-        <tbody><tr>
-            <td>Minimum Stocked Qty:</td>
-            <td><input type="text" id="minSQty" name="minSQty"></td>
-        </tr>
-        <tr>
-            <td>Minimum Booked Qty:</td>
-            <td><input type="text" id="minBQty" name="minBQty"></td>
-        </tr>
-    </tbody></table>
+<c:if test = "${data.type == 'GL'}">
+	<table border="0" cellspacing="5" cellpadding="5">
+	        <tbody><tr>
+	            <td>Minimum Stocked Qty:</td>
+	            <td><input type="text" id="minSQty" name="minSQty"></td>
+	        </tr>
+	        <tr>
+	            <td>Minimum Booked Qty:</td>
+	            <td><input type="text" id="minBQty" name="minBQty"></td>
+	        </tr>
+	    </tbody>
+    </table>
+</c:if>
 <div class="table-responsive col-md-12">
  	<table id="dataGrid" class="display table table-striped table-bordered order-column"  cellspacing="0" width="100%"></table>
 </div>
@@ -90,12 +94,7 @@ $.fn.dataTable.ext.search.push(
                
                $('#minBQty, #minSQty').keyup( function() {
                    table.draw();
-               } );
-               
-               
-               
-               
-               
+               } );     
 			</c:if>
 		    	
 		    });

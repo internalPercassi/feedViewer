@@ -100,12 +100,14 @@ public class RootController implements ServletContextAware{
                     columnList = Arrays.asList("GL", "INS", "Pertinency site", "Pertinency site Desc", "Unique product code", "Depositor", "Stocked Qty", "Booked Qty", "Accounting State");
                     headersList = createHeaderList(columnList);
                     obj.put("title", "Stocks File View");
+                    obj.put("type", "GL");
                     break;
                 case "OS":
                     
                     columnList = Arrays.asList("Codice Articolo", "Codice Modello", "Magazzino", "Inventario fisico", "In ordinazione", "Soglia riassortimento");
                     headersList = createHeaderList(columnList);
                     obj.put("title", "Overselling File View");
+                    obj.put("type", "OS");
                     break;
             }
             
