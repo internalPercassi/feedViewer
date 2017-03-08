@@ -3,19 +3,24 @@
 
 <c:if test = "${data.type == 'GL'}">
 	<div class="col-md-12 form-group">
-		<div class="col-md-2 input-group">
-		  <span class="input-group-addon">Minimum Booked Qty:</span>
-		  <input type="text" class="form-control input-sm"  id="minBQty" name="minBQty">
+		<div class="col-md-2">
+			<div class="input-group">
+			  <span class="input-group-addon">Minimum Booked Qty:</span>
+			  <input type="text" class="form-control input-sm"  id="minBQty" name="minBQty">
+			</div>
 		</div>
-		<div class="col-md-2 input-group">
-		  <span class="input-group-addon">Minimum Stocked Qty:</span>
-		  <input type="text" class="form-control input-sm"  id="minSQty" name="minSQty">
+		<div class="col-md-2">
+			<div class="input-group">
+			  <span class="input-group-addon">Minimum Stocked Qty:</span>
+			  <input type="text" class="form-control input-sm"  id="minSQty" name="minSQty">
+			</div>
 		</div>
 	</div>
 </c:if>
-
-<div class="table-responsive col-md-12">
- 	<table id="dataGrid" class="display table table-striped table-bordered order-column"  cellspacing="0" width="100%"></table>
+<div class="col-md-12">
+	<div class="table-responsive col-md-12">
+	 	<table id="dataGrid" class="display table table-striped table-bordered order-column"  cellspacing="0" width="100%"></table>
+	</div>
 </div>
 
 <script src="<c:url value="/resources/datatable/js/dataTables.fixedColumns.min.js" />" type="text/javascript" ></script>

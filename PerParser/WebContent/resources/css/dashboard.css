@@ -116,6 +116,6 @@ tfoot input {
     position: absolute;
 }
 
-.row-padding{
-	padding: 15 0 15 0;
+.no-padding{
+	padding: 0 0 0 0;
 }

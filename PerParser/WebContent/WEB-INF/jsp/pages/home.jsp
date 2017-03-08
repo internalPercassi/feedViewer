@@ -12,7 +12,7 @@
 <div class="row">
 	<form class="col-md-12" method="POST" action="${pageContext.request.contextPath}/uploadFile" enctype="multipart/form-data">
 		<div class="col-md-2">
-			<select name="fileType" class="btn btn-default selectpicker">
+			<select name="fileType" class="btn btn-default selectpicker form-control">
 			    <option value="GL">GL File</option>
 			    <option value="OS">OverSelling</option>
 		  	</select>
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<div class="col-md-2 pull-right">
-			<input id="uploadBtn" class="btn btn-default" type="submit" value="Upload File" />
+			<input id="uploadBtn" class="btn btn-default form-control" type="submit" value="Upload File" />
 		</div>
 	</form>
 </div>
