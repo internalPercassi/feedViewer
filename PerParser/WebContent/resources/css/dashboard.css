@@ -115,3 +115,7 @@ tfoot input {
     right: 300px;
     position: absolute;
 }
+
+.row-padding{
+	padding: 15 0 15 0;
+}
