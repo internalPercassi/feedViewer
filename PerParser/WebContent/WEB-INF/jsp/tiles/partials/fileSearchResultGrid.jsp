@@ -78,7 +78,8 @@
 	                data:data.data,
 	                columns: data.headers,
 	                dom: 'B<"clear">lfrtip', 
-	                buttons: [ 'copy', 'csv' ]
+	                buttons: [ 'copy', 'csv' ],
+					processing: true
 	           });
 
 			   $("#dataGrid").append( $('<tfoot/>').append( $("#dataGrid thead tr").clone() ) );

@@ -15,6 +15,7 @@
 			<select name="fileType" class="btn btn-default selectpicker form-control">
 			    <option value="GL">GL File</option>
 			    <option value="OS">OverSelling</option>
+				<option value="FacebookProduct">Facebook Product</option>
 		  	</select>
 		</div>
 		<div class="col-md-3">
