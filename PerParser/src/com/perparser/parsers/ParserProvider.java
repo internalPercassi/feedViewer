@@ -1,6 +1,5 @@
 package com.perparser.parsers;
 
-import com.perparser.parsers.products.FacebookProductParser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,6 +24,9 @@ public class ParserProvider {
 	@Autowired
 	@Qualifier("FacebookProductParser")
 	private BaseParser facebookProductParser;
+	@Autowired
+	@Qualifier("AmazonParser")
+	private BaseParser amazonParser;
 	
 	public BaseParser getParser(String type) throws ClassNotFoundException,IllegalArgumentException{
 		if (StringUtils.isBlank(type) ){
@@ -36,6 +38,8 @@ public class ParserProvider {
 			return glParser;
 		} else if (FacebookProductParser.TYPE.equalsIgnoreCase(type)){
 			return facebookProductParser;
+		} else if (AmazonParser.TYPE.equalsIgnoreCase(type)){
+			return amazonParser;
 		} else {
 			throw new ClassNotFoundException(NOT_PARSER_FOUND_MSG+type);
 		}

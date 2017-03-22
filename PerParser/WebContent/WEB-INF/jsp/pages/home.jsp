@@ -16,6 +16,7 @@
 			    <option value="GL">GL File</option>
 			    <option value="OS">OverSelling</option>
 				<option value="FacebookProduct">Facebook Product</option>
+				<option value="Amazon">Amazon</option>
 		  	</select>
 		</div>
 		<div class="col-md-3">
