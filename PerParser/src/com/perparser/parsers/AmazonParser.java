@@ -10,10 +10,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
-@Service("AmazonParser")
-public class AmazonParser extends BaseParser{
+import com.opencsv.CSVReader;
 
-	private static final List<String> COLUMN_LIST = Arrays.asList();
+@Service("AmazonParser")
+public class AmazonParser extends BaseParser {
+
+	private static final List<String> COLUMN_LIST = Arrays.asList("sku", "upc", "title", "brand", "manufacturer", "product_type", "item_type", "description", "part_number", "catalog_number");
 	static final String TYPE = "Amazon";
 	private static final String TITLE = "Amazon File View";
 	
@@ -23,22 +25,20 @@ public class AmazonParser extends BaseParser{
 		JSONArray list = new JSONArray();
 		JSONArray headersList = new JSONArray();
 		JSONObject ret = null;
+		InputStreamReader exp = new InputStreamReader(stream);
+		
+		CSVReader csvReader = new CSVReader(exp, '|');
 
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
-		String line = null;
-		while ((line = bufferedReader.readLine()) != null) {
+	     String [] nextLine;
+	     while ((nextLine = csvReader.readNext()) != null) {
+	        // nextLine[] is an array of values from the line
+	        System.out.println(nextLine[0] + nextLine[1] + "etc...");
 			tmplist = new JSONArray();
-			tmplist.add(line.substring(0, 2));
-			tmplist.add(line.substring(2, 5));
-			tmplist.add(line.substring(5, 15));
-			tmplist.add(line.substring(15, 18));
-			tmplist.add(line.substring(28, 64));
-			tmplist.add(line.substring(64, 67));
-			tmplist.add(line.substring(150, 160).replaceFirst("^0+(?!$)", ""));
-			tmplist.add(line.substring(163, 173).replaceFirst("^0+(?!$)", ""));
-			tmplist.add(line.substring(176, 191));
+			tmplist.add(nextLine[0]);
+			tmplist.add(nextLine[1]);
+			tmplist.add(nextLine[2]);
 			list.add(tmplist);
-		}
+	     }
 		headersList = createHeaderList(COLUMN_LIST);
 		ret= createJSON(list, headersList, TYPE, TITLE);
 		return ret;
