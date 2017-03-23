@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.opencsv.CSVReader;
 
+
+
+
 @Service("AmazonParser")
 public class AmazonParser extends BaseParser {
 
@@ -21,8 +24,8 @@ public class AmazonParser extends BaseParser {
 	
 	@Override
 	public JSONObject parseToJson(InputStream stream, String countryCode) throws IOException{
-		JSONArray tmplist = null;
 		JSONArray list = new JSONArray();
+		JSONArray tmplist = new JSONArray();
 		JSONArray headersList = new JSONArray();
 		JSONObject ret = null;
 		InputStreamReader exp = new InputStreamReader(stream);
@@ -31,9 +34,7 @@ public class AmazonParser extends BaseParser {
 
 	     String [] nextLine;
 	     while ((nextLine = csvReader.readNext()) != null) {
-	        // nextLine[] is an array of values from the line
-	        System.out.println(nextLine[0] + nextLine[1] + "etc...");
-			tmplist = new JSONArray();
+	    	tmplist = new JSONArray(); 
 			tmplist.add(nextLine[0]);
 			tmplist.add(nextLine[1]);
 			tmplist.add(nextLine[2]);
